@@ -26,7 +26,7 @@ import javafx.util.Duration;
 
 public class Controller implements Initializable, MediaControls {
 
-    public static String title;
+
 
     @FXML
     private MediaPlayer mediaPlayer;
@@ -43,7 +43,7 @@ public class Controller implements Initializable, MediaControls {
     @FXML
     private StackPane pane;
 
-
+    public static String title;
 
     @Override
     public void uploadFile(ActionEvent event) {
@@ -53,27 +53,33 @@ public class Controller implements Initializable, MediaControls {
         String fileExtension = path.substring(path.lastIndexOf(".") + 1);
         title = file.getName().toString();
 
-
-
         if(path != null && fileExtension.equals("mp4") || fileExtension.equals("mov")){
-            media = new Media(path);
-            mediaPlayer = new MediaPlayer(media);
-            mediaView.setMediaPlayer(mediaPlayer);
+            if(mediaPlayer != null){
+                mediaPlayer.stop();
+            }
+
+                media = new Media(path);
+                mediaPlayer = new MediaPlayer(media);
+                mediaView.setMediaPlayer(mediaPlayer);
+
 
             fitMediaViewSize();
             setProgressBarDuration();
-            mediaPlayer.play();
+           mediaPlayer.play();
 
-        } else {
-            media = new Media(path);
-            mediaPlayer = new MediaPlayer(media);
+        } else if(path != null && fileExtension.equals("mp3")  || fileExtension.equals("wav")) {
+            if(mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
+                media = new Media(path);
+                mediaPlayer = new MediaPlayer(media);
+
             setProgressBarDuration();
             updateAudioTitle(title);
 
             audioTitle.widthProperty().addListener((obs, oldVal, newVal) -> {
                 audioTitle.setFont(new Font(34));
             });
-
             mediaPlayer.play();
         }
     }
