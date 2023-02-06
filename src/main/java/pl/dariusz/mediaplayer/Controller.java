@@ -26,8 +26,6 @@ import javafx.util.Duration;
 
 public class Controller implements Initializable, MediaControls {
 
-
-
     @FXML
     private MediaPlayer mediaPlayer;
     @FXML
@@ -57,15 +55,13 @@ public class Controller implements Initializable, MediaControls {
             if(mediaPlayer != null){
                 mediaPlayer.stop();
             }
-
                 media = new Media(path);
                 mediaPlayer = new MediaPlayer(media);
                 mediaView.setMediaPlayer(mediaPlayer);
 
-
             fitMediaViewSize();
             setProgressBarDuration();
-           mediaPlayer.play();
+            mediaPlayer.play();
 
         } else if(path != null && fileExtension.equals("mp3")  || fileExtension.equals("wav")) {
             if(mediaPlayer != null) {
@@ -78,7 +74,7 @@ public class Controller implements Initializable, MediaControls {
             updateAudioTitle(title);
 
             audioTitle.widthProperty().addListener((obs, oldVal, newVal) -> {
-                audioTitle.setFont(new Font(34));
+                audioTitle.setFont(new Font(26));
             });
             mediaPlayer.play();
         }
@@ -86,7 +82,6 @@ public class Controller implements Initializable, MediaControls {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        updateAudioTitle(title);
 
         for (int speed : speeds) {
             mediaSpeed.getItems().add(speed + "%");
