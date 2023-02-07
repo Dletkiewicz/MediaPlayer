@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(174, 173, 173);" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.dariusz.mediaplayer.Controller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(174, 173, 173);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.dariusz.mediaplayer.Controller">
    <center>
       <StackPane fx:id="pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #E8E8E8;" BorderPane.alignment="CENTER">
          <Label fx:id="audioTitle" alignment="TOP_CENTER" StackPane.alignment="TOP_CENTER">
@@ -24,14 +24,20 @@
          <ImageView fx:id="audioIcon" fitHeight="225.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
             <image>
                <Image url="@Images/sound.png" />
-            </image></ImageView>
-         <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" />
-         <VBox alignment="BOTTOM_CENTER" maxHeight="40.0" prefHeight="50.0" stylesheets="@style.css" StackPane.alignment="BOTTOM_CENTER">
+            </image>
+            <StackPane.margin>
+               <Insets bottom="50.0" />
+            </StackPane.margin></ImageView>
+         <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0">
+            <StackPane.margin>
+               <Insets />
+            </StackPane.margin></MediaView>
+         <VBox alignment="BOTTOM_CENTER" maxHeight="40.0" prefHeight="50.0" StackPane.alignment="BOTTOM_CENTER">
             <StackPane.margin>
                <Insets />
             </StackPane.margin>
-            <Slider fx:id="progressBar" stylesheets="@style.css" />
-            <HBox alignment="BOTTOM_CENTER" maxHeight="40.0" prefHeight="30.0" style="-fx-background-color: #202020;">
+            <Slider fx:id="progressBar" />
+            <HBox alignment="BOTTOM_CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #202020;">
                <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#uploadFile" style="-fx-background-color: E8E8E8;">
                   <HBox.margin>
                      <Insets bottom="7.0" right="7.0" top="5.0" />
@@ -44,7 +50,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button mnemonicParsing="false" onAction="#resetMedia" style="-fx-background-color: E8E8E8;" stylesheets="@style.css">
+               <Button mnemonicParsing="false" onAction="#resetMedia" style="-fx-background-color: E8E8E8;">
                   <HBox.margin>
                      <Insets bottom="7.0" right="7.0" />
                   </HBox.margin>
@@ -56,7 +62,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button mnemonicParsing="false" onAction="#playMedia" style="-fx-background-color: E8E8E8;" stylesheets="@style.css">
+               <Button mnemonicParsing="false" onAction="#playMedia" style="-fx-background-color: E8E8E8;">
                   <HBox.margin>
                      <Insets bottom="7.0" right="7.0" />
                   </HBox.margin>
@@ -68,7 +74,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button mnemonicParsing="false" onAction="#pauseMedia" style="-fx-background-color: E8E8E8;" stylesheets="@style.css">
+               <Button mnemonicParsing="false" onAction="#pauseMedia" style="-fx-background-color: E8E8E8;">
                   <HBox.margin>
                      <Insets bottom="7.0" right="7.0" />
                   </HBox.margin>
@@ -88,12 +94,12 @@
                      <Image url="@Images/volume.png" />
                   </image>
                </ImageView>
-               <Slider fx:id="volumeSlider" prefHeight="17.0" prefWidth="154.0" stylesheets="@style.css" value="50.0">
+               <Slider fx:id="volumeSlider" prefHeight="17.0" prefWidth="154.0" value="50.0">
                   <HBox.margin>
                      <Insets bottom="19.0" left="-5.0" right="10.0" />
                   </HBox.margin>
                </Slider>
-               <ComboBox fx:id="mediaSpeed" prefWidth="150.0" promptText="Speed" style="-fx-background-color: E8E8E8;">
+               <ComboBox fx:id="mediaSpeed" prefHeight="25.0" prefWidth="86.0" promptText="Speed" style="-fx-background-color: E8E8E8;">
                   <HBox.margin>
                      <Insets bottom="15.0" right="7.0" />
                   </HBox.margin>
